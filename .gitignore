@@ -1,0 +1,43 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# Gradle
+build/
+.gradle/
+
+# Компилированные файлы
+*.class
+*.jar
+*.war
+*.ear
+
+# Лог‑файлы
+*.log
+
+# Временные файлы
+*.tmp
+
+# Окружение
+.env
+.env.local
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Документация
+doc/

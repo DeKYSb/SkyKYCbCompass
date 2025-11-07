@@ -1,6 +1,0 @@
-org\kycb\skyKYCbCompass\SkyKYCbCompass.class
-org\kycb\skyKYCbCompass\command\CompassCompleter.class
-org\kycb\skyKYCbCompass\Compass.class
-org\kycb\skyKYCbCompass\handler\CompassListener.class
-org\kycb\skyKYCbCompass\tag\CompassMarker.class
-org\kycb\skyKYCbCompass\command\CompassCommand.class
