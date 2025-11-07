@@ -16,15 +16,15 @@ public class Compass {
     public static final float EAST_ANGLE  = 270.0f;  // Восток = 270°
     public static final float WEST_ANGLE  = 90.0f;   // Запад = 90°
 
-    public static final int BAR_LENGTH = 29;
+    public static final int BAR_LENGTH = 29; // Символов
     public static final float[] ANGLES = {NORTH_ANGLE, SOUTH_ANGLE, EAST_ANGLE, WEST_ANGLE};
     public static final char[] SYMBOLS = {'С', 'Ю', 'В', 'З'};
     public static final float VISIBILITY_ANGLE = 90.0f;
     public static final int MAX_POS = BAR_LENGTH - 1;
 
     public static final char MARKER_SYMBOL = 'Г';
-    public static final double MIN_DISTANCE = 10.0;
-    public static final double MAX_DISTANCE = 60.0;
+    public static final double MIN_DISTANCE = 10.0; // Блок
+    public static final double MAX_DISTANCE = MIN_DISTANCE + 100.0; // Блок
     private static final float POSITION_FACTOR = MAX_POS / (2 * VISIBILITY_ANGLE);
 
     private final StringBuilder barText = new StringBuilder();
