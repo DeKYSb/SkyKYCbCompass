@@ -1,0 +1,9 @@
+name: SkyKYCbCompass
+version: '0.0.1'
+main: org.kycb.skyKYCbCompass.SkyKYCbCompass
+api-version: '1.21'
+
+commands:
+  compass:
+    description: Управление компасом
+    usage: /compass <help>
