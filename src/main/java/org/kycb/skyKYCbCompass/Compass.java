@@ -81,7 +81,7 @@ private StringBuilder defaultCompass() {
         SkyKYCbCompass plugin = SkyKYCbCompass.getPlugin(SkyKYCbCompass.class);
 
         for (CompassMarker marker : plugin.getAllMarkers().values()) {
-            Location markerLoc = marker.getLocation();
+            Location markerLoc = marker.location();
 
             // Проверяем расстояние
             double distance = playerLoc.distance(markerLoc);

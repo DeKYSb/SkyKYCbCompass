@@ -7,16 +7,15 @@ import org.kycb.skyKYCbCompass.command.CompassCompleter;
 import org.kycb.skyKYCbCompass.handler.CompassListener;
 import org.kycb.skyKYCbCompass.tag.CompassMarker;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 
 public final class SkyKYCbCompass extends JavaPlugin {
 
     private final Map<String, CompassMarker> markers = new HashMap<>();
 
     public void addMarker(String name, Location location) {
-        markers.put(name, new CompassMarker(name, location));
+        markers.put(name, new CompassMarker(location));
     }
 
     public void removeMarker(String name) {
@@ -32,13 +31,13 @@ public final class SkyKYCbCompass extends JavaPlugin {
     }
 
     public Map<String, CompassMarker> getAllMarkers() {
-        return markers;
+        return Collections.unmodifiableMap(markers);
     }
 
     @Override
     public void onEnable() {
-        getCommand("compass").setExecutor(new CompassCommand(this));
-        getCommand("compass").setTabCompleter(new CompassCompleter(this));
+        Objects.requireNonNull(getCommand("compass")).setExecutor(new CompassCommand(this));
+        Objects.requireNonNull(getCommand("compass")).setTabCompleter(new CompassCompleter(this));
         getServer().getPluginManager().registerEvents(new CompassListener(), this);
     }
 
