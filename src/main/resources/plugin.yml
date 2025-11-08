@@ -1,5 +1,5 @@
 name: SkyKYCbCompass
-version: '0.0.1'
+version: ${project.version}
 main: org.kycb.skyKYCbCompass.SkyKYCbCompass
 api-version: '1.21'
 
@@ -7,3 +7,4 @@ commands:
   compass:
     description: Управление компасом
     usage: /compass <help>
+    aliases: [comp, cmp]

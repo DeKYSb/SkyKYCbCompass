@@ -1,7 +1,6 @@
 package org.kycb.skyKYCbCompass.command;
 
 import org.bukkit.Location;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,14 +9,14 @@ import org.kycb.skyKYCbCompass.SkyKYCbCompass;
 
 public class CompassCommand implements CommandExecutor {
 
-    private final SkyKYCbCompass plugin;
+    private final SkyKYCbCompass marker;
 
-    public CompassCommand(SkyKYCbCompass plugin){
-        this.plugin = plugin;
+    public CompassCommand(SkyKYCbCompass marker) {
+        this.marker = marker;
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Только игроки могут использовать эту команду!");
             return true;
@@ -42,7 +41,7 @@ public class CompassCommand implements CommandExecutor {
                 return true;
             }
             case "list" -> {
-                sender.sendMessage(plugin.keySet().toString());
+                sender.sendMessage(marker.keySet().toString());
                 return true;
             }
         }
@@ -51,8 +50,8 @@ public class CompassCommand implements CommandExecutor {
 
     private void help(CommandSender sender) {
         sender.sendMessage("""
-                /compass setmarker <название метки> <x> <y> <z> -> установит метку
-                /compass deletemarker <название метки> -> удалить метку
+                /compass setmarker ... -> установит метку
+                /compass deletemarker ... -> удалить метку
                 /compass list -> список существующих меток""");
     }
 
@@ -79,11 +78,11 @@ public class CompassCommand implements CommandExecutor {
         String name = args[1];
         Location loc = new Location(player.getWorld(), x, y, z);
 
-        if (plugin.hasMarker(name)) {
-            plugin.addMarker(name, loc);
+        if (marker.hasMarker(name)) {
+            marker.addMarker(name, loc);
             sender.sendMessage("Метка §a" + name + "§f перенесена.");
         } else {
-            plugin.addMarker(name, loc);
+            marker.addMarker(name, loc);
             sender.sendMessage("Метка §a" + name + "§f установлена.");
         }
     }
@@ -98,8 +97,8 @@ public class CompassCommand implements CommandExecutor {
 
         String name = args[1];
 
-        if (plugin.hasMarker(name)) {
-            plugin.removeMarker(name);
+        if (marker.hasMarker(name)) {
+            marker.removeMarker(name);
             sender.sendMessage("Метка §a" + name + "§f удалена!");
         } else {
             sender.sendMessage("Метки §a" + name + "§f не существует!");
