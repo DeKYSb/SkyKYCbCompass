@@ -4,22 +4,15 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.kycb.skyKYCbCompass.tag.MarkerManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CmpCompleter implements TabCompleter {
-
-    private final MarkerManager markerManager;
-
-    public CmpCompleter(MarkerManager markerManager) {
-        this.markerManager = markerManager;
-    }
+public record CmpCompleter(MarkerManager markerManager) implements TabCompleter {
 
     @Override
-    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
+    public @NotNull List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         if (args.length == 1) {
             return List.of(
                     "createmarker",
@@ -53,7 +46,7 @@ public class CmpCompleter implements TabCompleter {
             );
         }
 
-        if (args.length == 3 && args[0].equals("createmarker")){
+        if (args.length == 3 && args[0].equals("createmarker")) {
             return List.of("<название метки>");
         }
 

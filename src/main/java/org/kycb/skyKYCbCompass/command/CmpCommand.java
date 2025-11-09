@@ -1,22 +1,17 @@
 package org.kycb.skyKYCbCompass.command;
 
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.kycb.skyKYCbCompass.tag.MarkerManager;
 
-public class CmpCommand implements CommandExecutor {
-
-    private final MarkerManager markerManager;
-
-    public CmpCommand(MarkerManager marker) {
-        this.markerManager = marker;
-    }
+public record CmpCommand(MarkerManager markerManager) implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String @NotNull [] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Только игроки могут использовать эту команду!");
             return true;

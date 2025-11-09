@@ -15,10 +15,6 @@ public class CmpTag {
         this.location = location;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public String getName() {
         return name;
     }
