@@ -15,6 +15,10 @@ public class CmpTag {
         this.location = location;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public double getRadius() {
         return radius;
     }
