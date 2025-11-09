@@ -11,7 +11,7 @@ import org.kycb.skyKYCbCompass.Compass;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CompassListener implements Listener {
+public class CmpListener implements Listener {
 
     private final Map<Player, Compass> playerCompasses = new HashMap<>();
 

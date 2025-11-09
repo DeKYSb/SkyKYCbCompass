@@ -6,7 +6,8 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
-import org.kycb.skyKYCbCompass.tag.CompassMarker;
+import org.kycb.skyKYCbCompass.tag.CmpTag;
+import org.kycb.skyKYCbCompass.tag.MarkerManager;
 
 public class Compass {
 
@@ -21,10 +22,7 @@ public class Compass {
     public static final char[] SYMBOLS = {'С', 'Ю', 'В', 'З'};
     public static final float VISIBILITY_ANGLE = 90.0f;
     public static final int MAX_POS = BAR_LENGTH - 1;
-
-    public static final char MARKER_SYMBOL = 'Г';
-    public static final double MIN_DISTANCE = 10.0; // Блок
-    public static final double MAX_DISTANCE = MIN_DISTANCE + 100.0; // Блок
+    public static final double MAX_DETECTION_DISTANCE = 100.0; // Блок
     private static final float POSITION_FACTOR = MAX_POS / (2 * VISIBILITY_ANGLE);
 
     private final StringBuilder barText = new StringBuilder();
@@ -79,13 +77,14 @@ private StringBuilder defaultCompass() {
 
     private void drawMarkers(Location playerLoc, float yaw) {
         SkyKYCbCompass plugin = SkyKYCbCompass.getPlugin(SkyKYCbCompass.class);
+        MarkerManager markerManager = plugin.getMarkerManager();
 
-        for (CompassMarker marker : plugin.getAllMarkers().values()) {
-            Location markerLoc = marker.location();
+        for (CmpTag marker : markerManager.getAllInvestigatedMarkers().values()) {
+            Location markerLoc = marker.getLocation();
 
             // Проверяем расстояние
             double distance = playerLoc.distance(markerLoc);
-            if (distance < MIN_DISTANCE || distance > MAX_DISTANCE) {
+            if (distance < marker.getRadius() || distance > (marker.getRadius() + MAX_DETECTION_DISTANCE)) {
                 continue;
             }
 
@@ -99,7 +98,7 @@ private StringBuilder defaultCompass() {
                 // Заменяем символ, если позиция свободна или это сторона света
                 if (barText.charAt(pos) == '=' ||
                         isCardinalSymbol(barText.charAt(pos))) {
-                    barText.setCharAt(pos, MARKER_SYMBOL);
+                    barText.setCharAt(pos, marker.getMarkerSymbol());
                 }
             }
         }
