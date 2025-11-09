@@ -27,7 +27,7 @@ public class Compass {
     private final StringBuilder barText = new StringBuilder();
     private final Player player;
     private final BossBar bossBar;
-    private String currentBarText = "";
+    private String currentBarText = " ";
 
     public Compass(Player player) {
         this.player = player;
@@ -52,7 +52,7 @@ private StringBuilder defaultCompass() {
     float yaw = normalizeAngle(location.getYaw());
 
     barText.setLength(0);
-    barText.append("=".repeat(BAR_LENGTH));
+    barText.append(" ".repeat(BAR_LENGTH));
 
     drawCardinalDirections(yaw);
 
@@ -95,7 +95,7 @@ private StringBuilder defaultCompass() {
                 int pos = calculatePosition(offset);
 
                 // Заменяем символ, если позиция свободна или это сторона света
-                if (barText.charAt(pos) == '=' ||
+                if (barText.charAt(pos) == ' ' ||
                         isCardinalSymbol(barText.charAt(pos))) {
                     barText.setCharAt(pos, marker.getMarkerSymbol());
                 }
