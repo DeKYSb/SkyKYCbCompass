@@ -22,7 +22,6 @@ public class Compass {
     public static final char[] SYMBOLS = {'С', 'Ю', 'В', 'З'};
     public static final float VISIBILITY_ANGLE = 90.0f;
     public static final int MAX_POS = BAR_LENGTH - 1;
-    public static final double MAX_DETECTION_DISTANCE = 100.0; // Блок
     private static final float POSITION_FACTOR = MAX_POS / (2 * VISIBILITY_ANGLE);
 
     private final StringBuilder barText = new StringBuilder();
@@ -84,7 +83,7 @@ private StringBuilder defaultCompass() {
 
             // Проверяем расстояние
             double distance = playerLoc.distance(markerLoc);
-            if (distance < marker.getRadius() || distance > (marker.getRadius() + MAX_DETECTION_DISTANCE)) {
+            if (distance < marker.getOvergrowthRadius() || distance > marker.getDetectionRadius()) {
                 continue;
             }
 

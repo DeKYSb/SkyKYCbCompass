@@ -56,23 +56,24 @@ public record CmpCommand(MarkerManager markerManager) implements CommandExecutor
     }
 
     private void createMarker(CommandSender sender, String[] args, Player player) {
-        int numberArgs = 7;
+        int numberArgs = 8;
 
         if (args.length != numberArgs) {
-            sender.sendMessage("Использование: /compass createmarker <тип маркера | символ> <название метки> <r> <x> <y> <z>");
+            sender.sendMessage("Использование: /compass createmarker <тип маркера> <название метки> <радиус обнаружения> <радиус области> <x> <y> <z>");
             return;
         }
 
-        double radius, x, y, z;
+        double detectionRadius, overgrowthRadius, x, y, z;
 
         try {
-            radius = Double.parseDouble(args[3]);
-            x = Double.parseDouble(args[4]);
-            y = Double.parseDouble(args[5]);
-            z = Double.parseDouble(args[6]);
+            detectionRadius = Double.parseDouble(args[3]);
+            overgrowthRadius = Double.parseDouble(args[4]);
+            x = Double.parseDouble(args[5]);
+            y = Double.parseDouble(args[6]);
+            z = Double.parseDouble(args[7]);
 
         } catch (NumberFormatException e) {
-            sender.sendMessage("Ошибка: радиус и координаты должны быть числами!");
+            sender.sendMessage("Ошибка: радиусы и координаты должны быть числами!");
             return;
         }
 
@@ -87,7 +88,7 @@ public record CmpCommand(MarkerManager markerManager) implements CommandExecutor
                     "/compass movemarker... (переместить)\n" +
                     "/compass deletemarker ... (удалить)");
         } else {
-            markerManager.addInvestigatedMarker(type, name, radius, loc);
+            markerManager.addInvestigatedMarker(type, name, detectionRadius, overgrowthRadius, loc);
             sender.sendMessage("Метка §a" + name + "§f установлена.");
         }
     }

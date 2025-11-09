@@ -12,8 +12,8 @@ public class MarkerManager {
     private final Map<String, CmpTag> investigatedMarkers = new HashMap<>();
 
     //Исследованные
-    public void addInvestigatedMarker(String type, String name, double radius, Location location) {
-        investigatedMarkers.put(name, new CmpTag(type, name, radius, location));
+    public void addInvestigatedMarker(String type, String name, double detectionRadius, double overgrowthRadius, Location location) {
+        investigatedMarkers.put(name, new CmpTag(type, name, detectionRadius, overgrowthRadius, location));
     }
 
     public void removeInvestigatedMarker(String name) {
