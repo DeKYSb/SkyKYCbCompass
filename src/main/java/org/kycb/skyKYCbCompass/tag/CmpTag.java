@@ -47,7 +47,7 @@ public class CmpTag {
             case "Ä<Камни-Хранители>" -> markerSymbol = 'Ä';       // Код: u00C4
             case "Å<Конюшни>" -> markerSymbol = 'Å';               // Код: u00C5
             case "Æ<Лагерь-Братьев-Бури>" -> markerSymbol = 'Æ';   // Код: u00C6
-            case "Ç<Лагерь-Великанов>" -> markerSymbol = 'Ç';      // Код: u00C7
+            case "Ç<Лагерь-Великанов>" -> markerSymbol = 'Ç';      // Код: u00C7 -
             case "È<Лесопилка>" -> markerSymbol = 'È';             // Код: u00C8
             case "É<Логово-Дракона>" -> markerSymbol = 'É';        // Код: u00C9
             case "Ê<Нордские-Башни>" -> markerSymbol = 'Ê';        // Код: u00CA
@@ -59,8 +59,8 @@ public class CmpTag {
             case "Ð<Рощи>" -> markerSymbol = 'Ð';                  // Код: u00D0
             case "Ñ<Руины>" -> markerSymbol = 'Ñ';                 // Код: u00D1
             case "Ò<Сигнальные-Башни>" -> markerSymbol = 'Ò';      // Код: u00D2
-            case "Ó<Фермы>" -> markerSymbol = 'Ó';                 // Код: u00D3
-            case "Ô<Фермы-(с-мельницей)>" -> markerSymbol = 'Ô';   // Код: u00D4
+            case "Ó<Маленькая-Ферма>" -> markerSymbol = 'Ó';       // Код: u00D3
+            case "Ô<Большая-Ферма>" -> markerSymbol = 'Ô';         // Код: u00D4
             case "Õ<Форты>" -> markerSymbol = 'Õ';                 // Код: u00D5
             case "Ù<Хижины>" -> markerSymbol = 'Ù';                // Кож: u00D9
             case "Ú<Шахты>" -> markerSymbol = 'Ú';                 // Код: u00DA
